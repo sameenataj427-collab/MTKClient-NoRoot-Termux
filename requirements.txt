@@ -1,0 +1,5 @@
+pyusb
+libusb
+pyserial
+pycryptodome
+colorama
