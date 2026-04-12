@@ -28,6 +28,7 @@ cd MTKClient-NoRoot-Termux
 . ~/.venv/bin/activate
 pip install -r requirements.txt
 pip install .
+```
 
 ​# Common Commands
 ​# Dump Boot and VBMeta
