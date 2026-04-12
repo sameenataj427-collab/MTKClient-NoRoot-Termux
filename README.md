@@ -28,7 +28,7 @@ git clone https://github.com/sameenataj427-collab/MTKClient-NoRoot-Termux
 cd MTKClient-NoRoot-Termux
 . ~/.venv/bin/activate
 pip install -r requirements.txt
-pip install --no-deep .
+pip install .
 ```
 
 ​# Common Commands
