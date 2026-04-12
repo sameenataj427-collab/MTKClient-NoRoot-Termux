@@ -6,8 +6,7 @@ Termux-Mtkclient (Sniper Edition)
 
 ​# Description
 ​This is a specialized, lightweight "Sniper" version of mtkclient, optimized specifically for Termux. It is a fully non-root based solution that allows you to bypass the need for a PC or a rooted host device by utilizing the Termux-USB API.
-# Discription on how this version of mtkclient works
-This version uses a high-frequency loop to bridge the gap between the host phone and target phone. It solves the common "Device not found" error by checking the USB port thousands of times, ensuring that the split-second BROM window is never missed.
+
 # ​Key Details
 ​Zero Root Required: Unlike the original mtkclient, this version is designed to run in a standard Termux environment without root access.
 ​Optimized for Mobile: All GUI, Windows-specific, and non-essential files have been stripped to keep the script small and fast.
