@@ -22,7 +22,7 @@ Install Termux and Termux:API from GitHub or F-Droid first. Do not use the Termu
 pkg install python git termux-api libusb clang binutils -y
 ```
 ```bash
-​python3 -m venv ~/.venv
+python3 -m venv ~/.venv
 ```
 ```bash
 git clone https://github.com/sameenataj427-collab/MTKClient-NoRoot-Termux
