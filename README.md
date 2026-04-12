@@ -1,59 +1,89 @@
-<div align="right">
-  Language:
-  🇺🇸
-  <a title="Chinese" href="./README.zh-CN.md">🇨🇳</a>
-</div>
+Termux-Mtkclient (Sniper Edition)
 
-# MTKClient
-![Logo](mtkclient/gui/images/logo_256.png)
+​[!CAUTION]
+> [!CAUTION]
+> **WARNING: This tool deals with low-level device partitions. Incorrect usage can permanently HARD BRICK your device. This tool is currently in BETA TESTING. I am not responsible for any damages, data loss, or bricked phones resulting from its use. Proceed at your own risk and with extreme caution. Always backup your boot and vbmeta partitions before making changes.**
 
-Just some mtk tool for exploitation, reading/writing flash and doing crazy stuff. 
-For windows, you need to install the stock mtk port and the usbdk driver (see instructions below).
-For linux, a patched kernel is only needed when using old kamakiri (see Setup folder) (except for read/write flash).
+​# Description
+​This is a specialized, lightweight "Sniper" version of mtkclient, optimized specifically for Termux. It is a fully non-root based solution that allows you to bypass the need for a PC or a rooted host device by utilizing the Termux-USB API.
+# Discription on how this version of mtkclient works
+This version uses a high-frequency loop to bridge the gap between the host phone and target phone. It solves the common "Device not found" error by checking the USB port thousands of times, ensuring that the split-second BROM window is never missed.
+# ​Key Details
+​Zero Root Required: Unlike the original mtkclient, this version is designed to run in a standard Termux environment without root access.
+​Optimized for Mobile: All GUI, Windows-specific, and non-essential files have been stripped to keep the script small and fast.
+​Enhanced Connection: Features a custom polling loop that looks for USB devices thousands of times per second to overcome Android's single-look limitation.
 
-Once the mtk script is running, boot into brom mode by powering off device, press and hold either
-vol up + power or vol down + power and connect the phone. Once detected by the tool,
-release the buttons.
+​**How to use the tool**
+1. ​First run the command you want.
+2.​Then press Enter and wait for the text "Waiting for device connection...".
+3. ​Then connect your target phone by holding its Volume Up and Volume Down buttons to the host phone via OTG.
+4. ​Then quickly press OK on the Termux API popup as soon as it appears.
+5. ​Then the script will handle the rest.
 
-## MT6781, MT6789, MT6855, MT6886, MT6895, MT6983, MT8985
-- These chipsets use a new protocol called V6 and the bootrom is patched. 
-You need to use the --loader option and a proper loader from the Loaders/V6 directory. 
-Bootrom won't work, you need to use preloader mode (no hw buttons pressed, just connect). 
-On some devices, preloader is deactivated, but you can reactivate it by running "adb reboot edl".
+# ​📥 Installation
+Install Termux and Termux:API from GitHub or F-Droid first. Do not use the Termux from Play Store, it is an outdated version and lacks the necessary package updates for this script to run.
+```bash
+​pkg update && pkg upgrade -y
+pkg install python git termux-api libusb clang binutils -y
+```
+# Using venv (i will add more option in future)
+```bash
+​python3 -m venv ~/.venv
+git clone https://github.com/sameenataj427-collab/Termux-Mtkclient
+cd Termux-Mtkclient
+. ~/.venv/bin/activate
+pip install -r requirements.txt
+pip install --no-deep .
+```
 
-## Credits
-- kamakiri [xyzz]
-- linecode exploit [chimera]
-- heapbait exploit [chimera], creds to [R0rt1z2],[Shomy]
-- Chaosmaster
-- Geert-Jan Kreileman (GUI, design & fixes)
-- All contributors
+​# Common Commands
+​# Dump Boot and VBMeta
+```bash
+​python3 mtk.py r boot,vbmeta boot.img,vbmeta.img
+```
+# ​Unlock Bootloader
+```bash
+​python3 mtk.py e metadata,userdata,md_udc
+```
+```bash
+python3 mtk.py daa
+```
+# ​Lock Bootloader
+```bash
+​python3 mtk.py oem lock
+```
+​# Flash Boot (for rooting)
+```bash
+​python3 mtk.py w boot patched_boot.img
+```
+# ​Read GPT Table
+```
+​python3 mtk.py printgpt
+```
+# ​Erase Userdata (Factory Reset)
+```bash
+​python3 mtk.py e userdata
+```
+# ​Flags that can be used in command and help to make work easy
+​There are two types of flags that can be used; both have different formats to be used in:
+​# First type:
+​Format: python3 mtk.py [command] --[flag]
 
-### Installation
+1. ​--force: Bypasses signature or size mismatches to force a flash.
 
-[See linux/macos installation hints](README-INSTALL.md)
+2. ​--reset: Commands the device to reboot normally once the process is complete.
 
-[See windows installation hints](README-WINDOWS.md)
+3. ​--skip [partition]: Tells the script to ignore a specific partition during a bulk read/write.
 
-[See automated Windows installer](https://github.com/codefl0w/mtkclient-windows-installer)
+# ​Second type:
+​Format: python3 mtk.py --[flag] [command]
 
-### Usage
-[See usage instructions](README-USAGE.md)
+​1. --nobatt: Used for devices that require being connected without a battery to trigger BROM.
 
-### Use Re LiveDVD (everything ready to go, based on Ubuntu):
-User: user, Password:user (based on Ubuntu 22.04 LTS)
+​2. --stage2: Forces the SLA/DAA bypass payload for newer, secured MediaTek chipsets.
 
-[Live DVD V6](https://www.androidfilehost.com/?fid=1109791587270922802)
+3. ​--debugmode: Provides a full log of the connection process to find where it is failing.
 
-### I have issues ....... please send logs and full console details !
+THESE ARE ONLY THE MOST USED FLAGS IN BOOTH TYPES , I CAN ADD ALL OF THEM, IF I DID THE REPOSITORY WILL BE 200 TO 300 LINS LONG AND IMPOSSIBLE TO READ
 
-- Run the mtk tool with --debugmode. Log will be written to log.txt (hopefully)
-
-## Rules / Infos
-
-### Chip details / configs
-- Go to config/brom_config.py
-- Unknown usb vid/pids for autodetection go to config/usb_ids.py
-
-## Other Stuff 
-[Learning resources](learning_resources.md)
+​For suggestions and bug reports contact sameenataj427@gmail.com. Thank you.
