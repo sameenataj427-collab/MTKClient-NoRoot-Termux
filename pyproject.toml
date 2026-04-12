@@ -49,11 +49,3 @@ include = [
 "stage2.py" = "mtkclient/stage2.py"
 "LICENSE" = "LICENSE"
 "README.md" = "README.md"
-s.wheel.force-include]
-"Tools/brom_to_offs.py" = "mtkclient/Tools/brom_to_offs.py"
-"Tools/da_parser.py" = "mtkclient/Tools/da_parser.py"
-"mtk.py" = "mtkclient/mtk.py"
-"mtk_gui.py" = "mtkclient/mtk_gui.py"
-"stage2.py" = "mtkclient/stage2.py"
-"LICENSE" = "LICENSE"
-"README.md" = "README.md"
