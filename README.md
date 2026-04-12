@@ -30,7 +30,7 @@ pkg install python git termux-api libusb clang binutils -y
 ```bash
 ​python3 -m venv ~/.venv
 git clone https://github.com/sameenataj427-collab/Termux-Mtkclient
-cd Termux-Mtkclient
+cd MTKClient-NoRoot-Termux
 . ~/.venv/bin/activate
 pip install -r requirements.txt
 pip install --no-deep .
