@@ -3,8 +3,8 @@ Termux-Mtkclient (Sniper Edition)
 ​[!CAUTION]
 > [!CAUTION]
 > **WARNING: This tool deals with low-level device partitions. Incorrect usage can permanently HARD BRICK your device. This tool is currently in BETA TESTING. I am not responsible for any damages, data loss, or bricked phones resulting from its use. Proceed at your own risk and with extreme caution. Always backup your boot and vbmeta partitions before making changes.**
-
-​# Description
+> 
+​**Description**
 ​This is a specialized, lightweight "Sniper" version of mtkclient, optimized specifically for Termux. It is a fully non-root based solution that allows you to bypass the need for a PC or a rooted host device by utilizing the Termux-USB API.
 
 # ​Key Details
