@@ -15,8 +15,10 @@ Mtkclient-NoRoot-Termux
 4. ​Then quickly press OK on the Termux API popup as soon as it appears.
 5. ​Then the script will handle the rest.
 
-# ​📥 Installation
-Install Termux and Termux:API from GitHub or F-Droid first. Do not use the Termux from Play Store, it is an outdated version and lacks the necessary package updates for this script to run.
+# Guid To Install The Tool 👇👇
+
+First install Termux and Termux:api from Fdroid or GitHub, dont use termux from playstore, that is a outdated version and it doesn't have the nessary pakages for the tool to run
+
 ```bash
 ​pkg update && pkg upgrade -y
 pkg install python git termux-api libusb clang binutils -y
