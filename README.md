@@ -37,32 +37,33 @@ pip install .
 ```bash
 ​python3 mtk.py r boot,vbmeta boot.img,vbmeta.img
 ```
-**​Unlock Bootloader**
+# Unlock Bootloader
 ```bash
 ​python3 mtk.py e metadata,userdata,md_udc
 ```
 ```bash
 python3 mtk.py daa seccfg unlock
 ```
-**Lock Bootloader**
+# Lock Bootloader
 ```bash
 ​python3 mtk.py oem lock
 ```
-​**Flash Boot (for rooting)**
+# Flash Boot (for rooting)
 ```bash
 ​python3 mtk.py w boot patched_boot.img
 ```
-**Read GPT Table**
+# Read GPT Table
 ```
 ​python3 mtk.py printgpt
 ```
-**Erase Userdata (Factory Reset)**
+# Erase Userdata (Factory Reset)
 ```bash
 ​python3 mtk.py e userdata
 ```
 # ​Flags that can be used in command and help to make work easy
 ​There are two types of flags that can be used; both have different formats to be used in:
-​**First type:**
+​
+# First type:
 ​Format: python3 mtk.py [command] --[flag]
 
 1. ​--force: Bypasses signature or size mismatches to force a flash.
@@ -71,7 +72,7 @@ python3 mtk.py daa seccfg unlock
 
 3. ​--skip [partition]: Tells the script to ignore a specific partition during a bulk read/write.
 
-**Second type:**
+# Second type:
 ​Format: python3 mtk.py --[flag] [command]
 
 ​1. --nobatt: Used for devices that require being connected without a battery to trigger BROM.
